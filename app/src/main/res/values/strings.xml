@@ -1,0 +1,18 @@
+<resources>
+  <string name="app_name">iParish</string>
+  <string name="toast_Logged">You are logged in</string>
+  <string name="toast_Login">Please log in</string>
+  <string name="enter_email">Please enter email</string>
+  <string name="enter_password">Please enter password</string>
+  <string name="error_empty">Fields are empty!</string>
+  <string name="error_again">Error Try again</string>
+  <string name="error">Error occured</string>
+  <string name="welcome">Welcome! You are logged in</string>
+  <string name="logout">Log out</string>
+  <string name="email_hint">Email</string>
+  <string name="passwd_hint">Password</string>
+  <string name="notregistered">Not registered? Sign Up here</string>
+  <string name="registered">Already have an account? Sign in here</string>
+  <string name="login">Log In</string>
+  <string name="register">Register</string>
+</resources>
