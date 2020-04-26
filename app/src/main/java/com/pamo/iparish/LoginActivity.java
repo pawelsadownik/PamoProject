@@ -44,12 +44,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
                 if( mFirebaseUser != null ){
-                    Toast.makeText(LoginActivity.this, Resources.getSystem().getString(R.string.toast_Logged),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, getString(R.string.toast_Logged),Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(i);
                 }
                 else{
-                    Toast.makeText(LoginActivity.this,Resources.getSystem().getString(R.string.toast_Login),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,getString(R.string.toast_Login),Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -60,22 +60,22 @@ public class LoginActivity extends AppCompatActivity {
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if(email.isEmpty()){
-                    emailId.setError(Resources.getSystem().getString(R.string.enter_email));
+                    emailId.setError(getString(R.string.enter_email));
                     emailId.requestFocus();
                 }
                 else  if(pwd.isEmpty()){
-                    password.setError(Resources.getSystem().getString(R.string.enter_password));
+                    password.setError(getString(R.string.enter_password));
                     password.requestFocus();
                 }
                 else  if(email.isEmpty() && pwd.isEmpty()){
-                    Toast.makeText(LoginActivity.this,Resources.getSystem().getString(R.string.error_empty),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,getString(R.string.error_empty),Toast.LENGTH_SHORT).show();
                 }
                 else  if(!(email.isEmpty() && pwd.isEmpty())){
                     mFirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
-                                Toast.makeText(LoginActivity.this,Resources.getSystem().getString(R.string.error_again),Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this,getString(R.string.error_again),Toast.LENGTH_SHORT).show();
                             }
                             else{
                                 Intent intToHome = new Intent(LoginActivity.this,HomeActivity.class);
@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
                 }
                 else{
-                    Toast.makeText(LoginActivity.this,Resources.getSystem().getString(R.string.error),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,getString(R.string.error),Toast.LENGTH_SHORT).show();
 
                 }
 

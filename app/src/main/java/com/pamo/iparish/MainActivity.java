@@ -42,22 +42,22 @@ public class MainActivity extends AppCompatActivity {
         String email = emailId.getText().toString();
         String pwd = password.getText().toString();
         if(email.isEmpty()){
-          emailId.setError(Resources.getSystem().getString(R.string.enter_email));
+          emailId.setError(getString(R.string.enter_email));
           emailId.requestFocus();
         }
         else  if(pwd.isEmpty()){
-          password.setError(Resources.getSystem().getString(R.string.enter_password));
+          password.setError(getString(R.string.enter_password));
           password.requestFocus();
         }
         else  if(email.isEmpty() && pwd.isEmpty()){
-          Toast.makeText(MainActivity.this,Resources.getSystem().getString(R.string.error_empty),Toast.LENGTH_SHORT).show();
+          Toast.makeText(MainActivity.this,getString(R.string.error_empty),Toast.LENGTH_SHORT).show();
         }
         else  if(!(email.isEmpty() && pwd.isEmpty())){
           mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
               if(!task.isSuccessful()){
-                Toast.makeText(MainActivity.this,Resources.getSystem().getString(R.string.error_again),Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,getString(R.string.error_again),Toast.LENGTH_SHORT).show();
               }
               else {
                 startActivity(new Intent(MainActivity.this,HomeActivity.class));
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
           });
         }
         else{
-          Toast.makeText(MainActivity.this,Resources.getSystem().getString(R.string.error),Toast.LENGTH_SHORT).show();
+          Toast.makeText(MainActivity.this,getString(R.string.error),Toast.LENGTH_SHORT).show();
 
         }
       }
