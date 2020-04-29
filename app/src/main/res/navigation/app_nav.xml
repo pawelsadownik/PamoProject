@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/HomeFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.pamo.iparish.HomeFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_QuickOfferingFragment"
+            app:destination="@id/QuickOfferingFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_CustomOfferingFragment"
+            app:destination="@id/CustomOfferingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/QuickOfferingFragment"
+        android:name="com.pamo.iparish.QuickOfferingFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_quick_offering"/>
+    <fragment
+        android:id="@+id/CustomOfferingFragment"
+        android:name="com.pamo.iparish.CustomOfferingFragment"
+        android:label="fragment_custom_offering"
+        tools:layout="@layout/fragment_custom_offering" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.pamo.iparish.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_PaymentSettings"
+            app:destination="@id/PaymentSettings" />
+        <action
+            android:id="@+id/action_settingsFragment_to_ParishPicker"
+            app:destination="@id/ParishPicker" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_settingsFragment"
+        app:destination="@id/settingsFragment"
+        app:launchSingleTop="true" />
+    <fragment android:id="@+id/PaymentSettings" />
+    <fragment android:id="@+id/ParishPicker" />
+</navigation>
