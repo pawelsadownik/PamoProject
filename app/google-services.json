@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "559394253362",
-    "firebase_url": "https://iparish-977ff.firebaseio.com",
-    "project_id": "iparish-977ff",
-    "storage_bucket": "iparish-977ff.appspot.com"
+    "project_number": "231789824328",
+    "firebase_url": "https://iparish-f5b0a.firebaseio.com",
+    "project_id": "iparish-f5b0a",
+    "storage_bucket": "iparish-f5b0a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:559394253362:android:7559c3dc1b87d4cfc4aa2b",
+        "mobilesdk_app_id": "1:231789824328:android:89be3897657a3708524b7d",
         "android_client_info": {
           "package_name": "com.pamo.iparish"
         }
       },
       "oauth_client": [
         {
-          "client_id": "559394253362-s2md25041da101a4anh7v2bfasj677nd.apps.googleusercontent.com",
+          "client_id": "231789824328-ke1qsodmgu658mvngipnd2ipr2qbbvhs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pamo.iparish",
+            "certificate_hash": "78c4b8a1971def6c4a8dba131522f5ae344785aa"
+          }
+        },
+        {
+          "client_id": "231789824328-t3vtug6akekn839oh7kc7u7tf1d4hpfv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCMjl1wXRs1-cR1iC8gxfX-TmPaaBYR5sQ"
+          "current_key": "AIzaSyCRETQBvJMCYo4OZKAy5vPdJkCqpa097Wc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "559394253362-s2md25041da101a4anh7v2bfasj677nd.apps.googleusercontent.com",
+              "client_id": "231789824328-t3vtug6akekn839oh7kc7u7tf1d4hpfv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
