@@ -38,6 +38,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 public class UserFormFragment extends Fragment {
+
   FirebaseFirestore fStore;
   FirebaseAuth fAuth;
   EditText phoneNumber;
@@ -45,11 +46,11 @@ public class UserFormFragment extends Fragment {
   EditText surname;
   Button saveButton;
   String userID;
-
   Spinner spinner;
   List<String> churches = new ArrayList<>();
   String church;
-  ArrayAdapter<String>arrayAdapter;
+  ArrayAdapter<String> arrayAdapter;
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -60,21 +61,20 @@ public class UserFormFragment extends Fragment {
     fStore.collection("churches")
       .get()
       .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-      @Override
-      public void onComplete(@NonNull Task<QuerySnapshot> task) {
-        if (task.isSuccessful()) {
+        @Override
+        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+          if (task.isSuccessful()) {
 
-          for (QueryDocumentSnapshot document : task.getResult()) {
-            churches.add(document.getString("name"));
+            for (QueryDocumentSnapshot document : task.getResult()) {
+              churches.add(document.getString("name"));
+            }
+          } else {
+            Log.d(TAG, "Error getting documents: ", task.getException());
           }
-        } else {
-          Log.d(TAG, "Error getting documents: ", task.getException());
         }
-      }
-    });
+      });
 
-    arrayAdapter = new ArrayAdapter<String>( getActivity(), simple_list_item_1, churches);
-
+    arrayAdapter = new ArrayAdapter<String>(getActivity(), simple_list_item_1, churches);
   }
 
   @Override
