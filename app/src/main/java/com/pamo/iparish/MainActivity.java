@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     password = findViewById(R.id.editText2);
     btnSignUp = findViewById(R.id.button2);
     tvSignIn = findViewById(R.id.textView);
+
     btnSignUp.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,getString(R.string.error_again),Toast.LENGTH_SHORT).show();
               }
               else {
-                startActivity(new Intent(MainActivity.this,HomeActivity.class));
+                startActivity(new Intent(MainActivity.this, HomeActivity.class));
               }
             }
           });
