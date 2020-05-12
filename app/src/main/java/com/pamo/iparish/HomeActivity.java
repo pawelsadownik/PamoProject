@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.fragment.NavHostFragment;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             case R.id.settings:
                 Log.println(Log.INFO, "iparish", "settings");
+
                 return true;
             case R.id.app_bar_switch_darkmode:
                 Log.println(Log.INFO, "iparish", "app_bar_switch_darkmode");

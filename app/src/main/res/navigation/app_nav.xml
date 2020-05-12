@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_HomeFragment_to_CustomOfferingFragment"
             app:destination="@id/CustomOfferingFragment" />
+      <action
+        android:id="@+id/action_HomeFragment_to_userFormFragment"
+        app:destination="@id/userFormFragment" />
     </fragment>
     <fragment
         android:id="@+id/QuickOfferingFragment"
@@ -47,4 +50,13 @@
         app:launchSingleTop="true" />
     <fragment android:id="@+id/PaymentSettings" />
     <fragment android:id="@+id/ParishPicker" />
+  <fragment
+    android:id="@+id/userFormFragment"
+    android:name="com.pamo.iparish.UserFormFragment"
+    android:label="fragment_user_form"
+    tools:layout="@layout/fragment_user_form" >
+    <action
+      android:id="@+id/action_userFormFragment_to_HomeFragment"
+      app:destination="@id/HomeFragment" />
+  </fragment>
 </navigation>
