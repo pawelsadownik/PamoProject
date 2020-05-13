@@ -1,5 +1,6 @@
 package com.pamo.iparish;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
@@ -71,6 +72,14 @@ public class HomeFragment extends Fragment {
 
           NavHostFragment.findNavController(HomeFragment.this)
             .navigate(R.id.action_HomeFragment_to_userFormFragment);
+        }
+      });
+
+      view.findViewById(R.id.button_payment).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          Intent i = new Intent(getActivity(),PaymentActivity.class);
+          startActivity(i);
         }
       });
     }
