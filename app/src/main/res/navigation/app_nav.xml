@@ -21,6 +21,9 @@
       <action
         android:id="@+id/action_HomeFragment_to_userFormFragment"
         app:destination="@id/userFormFragment" />
+      <action
+        android:id="@+id/action_HomeFragment_to_darkInitFragment"
+        app:destination="@id/darkInitFragment" />
     </fragment>
     <fragment
         android:id="@+id/QuickOfferingFragment"
@@ -58,5 +61,19 @@
     <action
       android:id="@+id/action_userFormFragment_to_HomeFragment"
       app:destination="@id/HomeFragment" />
+  </fragment>
+  <fragment
+    android:id="@+id/darkmodeFragment"
+    android:name="com.pamo.iparish.DarkmodeFragment"
+    android:label="fragment_darkmode"
+    tools:layout="@layout/fragment_darkmode" />
+  <fragment
+    android:id="@+id/darkInitFragment"
+    android:name="com.pamo.iparish.DarkInitFragment"
+    android:label="fragment_dark_init"
+    tools:layout="@layout/fragment_dark_init" >
+    <action
+      android:id="@+id/action_darkInitFragment_to_darkmodeFragment"
+      app:destination="@id/darkmodeFragment" />
   </fragment>
 </navigation>
