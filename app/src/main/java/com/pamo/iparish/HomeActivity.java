@@ -45,6 +45,7 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             case R.id.app_bar_switch_darkmode:
                 Log.println(Log.INFO, "iparish", "app_bar_switch_darkmode");
+
                 return true;
             case R.id.logout:
                 Log.println(Log.INFO, "iparish", "logout");

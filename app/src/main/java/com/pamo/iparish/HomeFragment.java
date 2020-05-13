@@ -82,5 +82,19 @@ public class HomeFragment extends Fragment {
           startActivity(i);
         }
       });
+
+      view.findViewById(R.id.dark_mode).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          // mis-clicking prevention, using threshold of 1000 ms
+          if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+            return;
+          }
+          mLastClickTime = SystemClock.elapsedRealtime();
+
+          NavHostFragment.findNavController(HomeFragment.this)
+            .navigate(R.id.action_HomeFragment_to_darkInitFragment);
+        }
+      });
     }
 }
