@@ -4,7 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.Menu;
@@ -16,6 +17,7 @@ public class HomeActivity extends AppCompatActivity {
 
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        navController = Navigation.findNavController(
+                this,
+                findViewById(R.id.nav_host_fragment).getId());
     }
 
     @Override
@@ -35,17 +45,20 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+
         switch (item.getItemId()) {
             case R.id.parish_pick:
                 Log.println(Log.INFO, "iparish", "parish_pick");
+                //navController.navigate(R.id.action_global_settingsFragment);
                 return true;
             case R.id.settings:
                 Log.println(Log.INFO, "iparish", "settings");
-
+                navController.navigate(R.id.action_global_settingsFragment);
                 return true;
             case R.id.app_bar_switch_darkmode:
                 Log.println(Log.INFO, "iparish", "app_bar_switch_darkmode");
-
+                navController.navigate(R.id.action_global_darkInitFragment);
                 return true;
             case R.id.logout:
                 Log.println(Log.INFO, "iparish", "logout");

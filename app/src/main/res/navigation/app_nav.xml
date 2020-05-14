@@ -18,12 +18,6 @@
         <action
             android:id="@+id/action_HomeFragment_to_CustomOfferingFragment"
             app:destination="@id/CustomOfferingFragment" />
-      <action
-        android:id="@+id/action_HomeFragment_to_userFormFragment"
-        app:destination="@id/userFormFragment" />
-      <action
-        android:id="@+id/action_HomeFragment_to_darkInitFragment"
-        app:destination="@id/darkInitFragment" />
     </fragment>
     <fragment
         android:id="@+id/QuickOfferingFragment"
@@ -46,6 +40,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_ParishPicker"
             app:destination="@id/ParishPicker" />
+        <action
+            android:id="@+id/action_settingsFragment_to_userFormFragment"
+            app:destination="@id/userFormFragment" />
     </fragment>
     <action
         android:id="@+id/action_global_settingsFragment"
@@ -76,4 +73,7 @@
       android:id="@+id/action_darkInitFragment_to_darkmodeFragment"
       app:destination="@id/darkmodeFragment" />
   </fragment>
+    <action
+        android:id="@+id/action_global_darkInitFragment"
+        app:destination="@id/darkInitFragment" />
 </navigation>

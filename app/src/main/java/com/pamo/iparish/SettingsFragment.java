@@ -1,5 +1,6 @@
 package com.pamo.iparish;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,12 +33,40 @@ public class SettingsFragment extends Fragment {
 
   public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    view.findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
+
+    view.findViewById(R.id.button_settings).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+        // mis-clicking prevention, using threshold of 1000 ms
+        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+          return;
+        }
+        mLastClickTime = SystemClock.elapsedRealtime();
 
         NavHostFragment.findNavController(SettingsFragment.this)
-          .navigate(R.id.action_HomeFragment_to_userFormFragment);
+                .navigate(R.id.action_settingsFragment_to_userFormFragment);
+      }
+    });
+
+    view.findViewById(R.id.button_payment).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        Intent i = new Intent(getActivity(),PaymentActivity.class);
+        startActivity(i);
+      }
+    });
+
+    view.findViewById(R.id.dark_mode).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        // mis-clicking prevention, using threshold of 1000 ms
+        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+          return;
+        }
+        mLastClickTime = SystemClock.elapsedRealtime();
+
+        NavHostFragment.findNavController(SettingsFragment.this)
+                .navigate(R.id.action_global_darkInitFragment);
       }
     });
   }
