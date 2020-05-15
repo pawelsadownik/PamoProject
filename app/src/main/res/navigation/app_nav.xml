@@ -38,8 +38,8 @@
             android:id="@+id/action_settingsFragment_to_PaymentSettings"
             app:destination="@id/PaymentSettings" />
         <action
-            android:id="@+id/action_settingsFragment_to_ParishPicker"
-            app:destination="@id/ParishPicker" />
+            android:id="@+id/action_settingsFragment_to_MapsFragment"
+            app:destination="@id/mapsFragment" />
         <action
             android:id="@+id/action_settingsFragment_to_userFormFragment"
             app:destination="@id/userFormFragment" />
@@ -49,7 +49,10 @@
         app:destination="@id/settingsFragment"
         app:launchSingleTop="true" />
     <fragment android:id="@+id/PaymentSettings" />
-    <fragment android:id="@+id/ParishPicker" />
+    <fragment android:id="@+id/mapsFragment"
+        android:name="com.pamo.iparish.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
   <fragment
     android:id="@+id/userFormFragment"
     android:name="com.pamo.iparish.UserFormFragment"
@@ -76,4 +79,7 @@
     <action
         android:id="@+id/action_global_darkInitFragment"
         app:destination="@id/darkInitFragment" />
+    <action
+        android:id="@+id/action_global_mapsFragment"
+        app:destination="@id/mapsFragment" />
 </navigation>

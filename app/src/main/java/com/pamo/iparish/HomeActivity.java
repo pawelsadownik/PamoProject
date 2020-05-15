@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.parish_pick:
                 Log.println(Log.INFO, "iparish", "parish_pick");
-                //navController.navigate(R.id.action_global_settingsFragment);
+                navController.navigate(R.id.action_global_mapsFragment);
                 return true;
             case R.id.settings:
                 Log.println(Log.INFO, "iparish", "settings");
