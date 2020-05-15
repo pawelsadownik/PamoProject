@@ -11,8 +11,8 @@
     android:id="@+id/gifInit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:src="@drawable/satan"
-    android:background="#000000"/>
+    android:background="#000000"
+    android:src="@drawable/satan" />
 
 
 </LinearLayout>

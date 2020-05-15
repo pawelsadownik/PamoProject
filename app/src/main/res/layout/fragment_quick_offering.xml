@@ -31,10 +31,14 @@
 
     <Button
         android:id="@+id/button_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="24dp"
         android:text="Click To Make Offering"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -76,7 +80,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="-" />
+            android:text="-"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/custom_button"/>
 
         <TextView
             android:id="@+id/textView3"
@@ -94,7 +102,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="+" />
+            android:text="+"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/custom_button"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

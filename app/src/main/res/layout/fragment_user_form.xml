@@ -8,7 +8,7 @@
 
   <EditText
     android:id="@+id/phoneNumber"
-    android:layout_width="wrap_content"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:ems="10"
     android:inputType="phone"
@@ -19,17 +19,18 @@
 
   <EditText
     android:id="@+id/name"
-    android:layout_width="wrap_content"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.503"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.355" />
+    app:layout_constraintVertical_bias="0.335" />
 
   <EditText
     android:id="@+id/surname"
-    android:layout_width="wrap_content"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -40,9 +41,13 @@
 
   <Button
     android:id="@+id/saveButton"
-    android:layout_width="wrap_content"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:text="Save"
+    android:textAllCaps="false"
+    android:textSize="20dp"
+    android:textColor="#FFFFFF"
+    android:background="@drawable/custom_button"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.498"
@@ -52,7 +57,7 @@
 
   <Spinner
     android:id="@+id/spinner"
-    android:layout_width="409dp"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
