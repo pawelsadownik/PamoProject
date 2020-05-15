@@ -3,6 +3,7 @@ package com.pamo.iparish;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -21,10 +22,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -74,7 +76,6 @@ public class UserFormFragment extends Fragment {
         }
       });
 
-    arrayAdapter = new ArrayAdapter<String>(getActivity(), simple_list_item_1, churches);
   }
 
   @Override
@@ -82,13 +83,32 @@ public class UserFormFragment extends Fragment {
                            Bundle savedInstanceState) {
 
     View view = inflater.inflate(R.layout.fragment_user_form, container, false);
+    phoneNumber = view.findViewById(R.id.phoneNumber);
+    name = view.findViewById(R.id.name);
+    surname = view.findViewById(R.id.surname);
+    saveButton = view.findViewById(R.id.saveButton);
     spinner = view.findViewById(R.id.spinner);
+    arrayAdapter = new ArrayAdapter<String>(getActivity(), simple_list_item_1, churches);
+    arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
     spinner.setAdapter(arrayAdapter);
+
+    DocumentReference usersDocument = fStore.collection("users").document(userID);
+    usersDocument.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+      @Override
+      public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+          phoneNumber.setText(documentSnapshot.getString("phoneNumber"));
+          name.setText(documentSnapshot.getString("name"));
+          surname.setText(documentSnapshot.getString("surname"));
+          //spinner.setSelection(churches.indexOf(documentSnapshot.get("church")));
+          spinner.setSelection(1);
+      }
+    });
 
     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
         church = churches.get(i);
+        spinner.setSelection(i);
       }
 
       @Override
@@ -96,11 +116,6 @@ public class UserFormFragment extends Fragment {
         church = churches.get(0);
       }
     });
-
-    phoneNumber = view.findViewById(R.id.phoneNumber);
-    name = view.findViewById(R.id.name);
-    surname = view.findViewById(R.id.surname);
-    saveButton = view.findViewById(R.id.saveButton);
 
     saveButton.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -112,31 +127,23 @@ public class UserFormFragment extends Fragment {
         user.put("email", fAuth.getCurrentUser().getEmail());
         user.put("church", church);
 
-        try {
-          fStore.collection("users")
-            .add(user)
-            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-              @Override
-              public void onSuccess(DocumentReference documentReference) {
-                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                NavHostFragment.findNavController(UserFormFragment.this)
-                  .navigate(R.id.action_userFormFragment_to_HomeFragment);
-              }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-              @Override
-              public void onFailure(@NonNull Exception e) {
-                Log.w(TAG, "Error adding document", e);
-              }
-            });
-        } catch (Exception e) {
-          Log.d(TAG, "Exception : " + e.toString());
-        }
+        userID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("users").document(userID);
 
-
+        documentReference.set(user).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+          NavHostFragment.findNavController(UserFormFragment.this)
+            .navigate(R.id.action_userFormFragment_to_HomeFragment);
+          Log.d(TAG, "onSuccess: " + userID);
+        }).addOnFailureListener(new OnFailureListener() {
+          @Override
+          public void onFailure(@NonNull Exception e) {
+            Log.d(TAG, "onFailure: " + e.toString());
+          }
+        });
       }
     });
-
+    spinner.setSelection(1);
     return view;
   }
 }
+

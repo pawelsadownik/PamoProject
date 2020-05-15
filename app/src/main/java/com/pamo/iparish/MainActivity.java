@@ -4,9 +4,11 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,17 +16,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import android.os.Bundle;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class MainActivity extends AppCompatActivity {
   EditText emailId, password;
   Button btnSignUp;
   TextView tvSignIn;
   FirebaseAuth mFirebaseAuth;
+  FirebaseFirestore fStore;
+  String userID;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     mFirebaseAuth = FirebaseAuth.getInstance();
+    fStore = FirebaseFirestore.getInstance();
     emailId = findViewById(R.id.editText);
     password = findViewById(R.id.editText2);
     btnSignUp = findViewById(R.id.button2);
@@ -61,14 +76,25 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,getString(R.string.error_again),Toast.LENGTH_SHORT).show();
               }
               else {
-                startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                userID = mFirebaseAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = fStore.collection("users").document(userID);
+                Map<String, Object> user = new HashMap<>();
+                user.put("email", email);
+                documentReference.set(user).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                  Log.d(TAG, "onSuccess: " + userID);
+                  startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                  }).addOnFailureListener(new OnFailureListener() {
+                  @Override
+                  public void onFailure(@NonNull Exception e) {
+                    Log.d(TAG, "onFailure: " + e.toString());
+                  }
+                });
               }
             }
           });
         }
         else{
           Toast.makeText(MainActivity.this,getString(R.string.error),Toast.LENGTH_SHORT).show();
-
         }
       }
     });
