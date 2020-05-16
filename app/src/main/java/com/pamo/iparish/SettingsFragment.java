@@ -52,6 +52,7 @@ public class SettingsFragment extends Fragment {
       @Override
       public void onClick(View view) {
         Intent i = new Intent(getActivity(),PaymentActivity.class);
+        i.putExtra("money", Integer.toString(0));
         startActivity(i);
       }
     });

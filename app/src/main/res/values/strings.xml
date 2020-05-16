@@ -24,5 +24,6 @@
 
   <string name="label_buy_now">Pay now</string>
   <string name="pln">PLN</string>
+  <string name="label_saveCard">SAVE</string>
 
 </resources>
