@@ -62,7 +62,6 @@ public class UserFormFragment extends Fragment {
     fAuth = FirebaseAuth.getInstance();
     fStore = FirebaseFirestore.getInstance();
     userID = fAuth.getCurrentUser().getUid();
-
   }
 
   @Override
