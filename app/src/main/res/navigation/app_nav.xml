@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_HomeFragment_to_CustomOfferingFragment"
             app:destination="@id/CustomOfferingFragment" />
+      <action
+        android:id="@+id/action_HomeFragment_to_prayerFragment"
+        app:destination="@id/prayerFragment" />
     </fragment>
     <fragment
         android:id="@+id/QuickOfferingFragment"
@@ -82,4 +85,8 @@
     <action
         android:id="@+id/action_global_mapsFragment"
         app:destination="@id/mapsFragment" />
+  <fragment
+    android:id="@+id/prayerFragment"
+    android:name="com.pamo.iparish.PrayerFragment"
+    android:label="PrayerFragment" />
 </navigation>

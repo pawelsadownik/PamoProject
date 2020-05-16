@@ -58,5 +58,19 @@ public class HomeFragment extends Fragment {
                         .navigate(R.id.action_HomeFragment_to_CustomOfferingFragment);
             }
         });
+
+      view.findViewById(R.id.button_prayer).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          // mis-clicking prevention, using threshold of 1000 ms
+          if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+            return;
+          }
+          mLastClickTime = SystemClock.elapsedRealtime();
+
+          NavHostFragment.findNavController(HomeFragment.this)
+            .navigate(R.id.action_HomeFragment_to_prayerFragment);
+        }
+      });
     }
 }
