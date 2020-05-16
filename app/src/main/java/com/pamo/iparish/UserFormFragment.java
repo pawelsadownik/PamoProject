@@ -1,5 +1,6 @@
 package com.pamo.iparish;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -60,55 +63,53 @@ public class UserFormFragment extends Fragment {
     fStore = FirebaseFirestore.getInstance();
     userID = fAuth.getCurrentUser().getUid();
 
-    fStore.collection("churches")
-      .get()
-      .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-        @Override
-        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-          if (task.isSuccessful()) {
-
-            for (QueryDocumentSnapshot document : task.getResult()) {
-              churches.add(document.getString("name"));
-            }
-          } else {
-            Log.d(TAG, "Error getting documents: ", task.getException());
-          }
-        }
-      });
-
   }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-
     View view = inflater.inflate(R.layout.fragment_user_form, container, false);
     phoneNumber = view.findViewById(R.id.phoneNumber);
     name = view.findViewById(R.id.name);
     surname = view.findViewById(R.id.surname);
     saveButton = view.findViewById(R.id.saveButton);
     spinner = view.findViewById(R.id.spinner);
-    arrayAdapter = new ArrayAdapter<String>(getActivity(), simple_list_item_1, churches);
-    arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-    spinner.setAdapter(arrayAdapter);
-
     DocumentReference usersDocument = fStore.collection("users").document(userID);
-    usersDocument.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
-      @Override
-      public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-          phoneNumber.setText(documentSnapshot.getString("phoneNumber"));
-          name.setText(documentSnapshot.getString("name"));
-          surname.setText(documentSnapshot.getString("surname"));
-          //spinner.setSelection(churches.indexOf(documentSnapshot.get("church")));
-          spinner.setSelection(1);
-      }
-    });
+
+    fStore.collection("churches")
+      .get()
+      .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        @Override
+        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+          if (task.isSuccessful()) {
+            for (QueryDocumentSnapshot document : task.getResult()) {
+              churches.add(document.getString("name"));
+            }
+            usersDocument.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+              @Override
+              public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                phoneNumber.setText(documentSnapshot.getString("phoneNumber"));
+                name.setText(documentSnapshot.getString("name"));
+                surname.setText(documentSnapshot.getString("surname"));
+                spinner.setSelection(churches.indexOf(documentSnapshot.get("church")));
+              }
+            });
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, churches);
+            adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+            spinner.setAdapter(adapter);
+
+          } else {
+            Log.d(TAG, "Error getting documents: ", task.getException());
+          }
+        }
+      });
+
+
 
     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
         church = churches.get(i);
-        spinner.setSelection(i);
       }
 
       @Override
@@ -142,7 +143,6 @@ public class UserFormFragment extends Fragment {
         });
       }
     });
-    spinner.setSelection(1);
     return view;
   }
 }
