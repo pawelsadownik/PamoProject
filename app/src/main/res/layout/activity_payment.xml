@@ -24,6 +24,19 @@ tools:context="com.pamo.iparish.PaymentActivity">
   android:text="@string/label_buy_now"
   android:textColor="@android:color/white" />
 
+  <Button
+    android:id="@+id/btnSave"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp"
+    android:layout_marginTop="10dp"
+    android:background="@color/colorAccent"
+    android:text="@string/label_saveCard"
+    android:textColor="@android:color/white" />
+
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
