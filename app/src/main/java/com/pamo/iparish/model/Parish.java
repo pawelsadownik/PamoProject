@@ -1,4 +1,4 @@
-package com.pamo.iparish;
+package com.pamo.iparish.model;
 
 public class Parish {
     private String id;

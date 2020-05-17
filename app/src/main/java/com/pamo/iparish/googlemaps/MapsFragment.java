@@ -28,6 +28,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pamo.iparish.R;
+import com.pamo.iparish.model.Parish;
 
 import java.util.ArrayList;
 import java.util.Collections;
