@@ -24,17 +24,17 @@
     </fragment>
     <fragment
         android:id="@+id/QuickOfferingFragment"
-        android:name="com.pamo.iparish.QuickOfferingFragment"
+        android:name="com.pamo.iparish.donation.QuickOfferingFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_quick_offering"/>
     <fragment
         android:id="@+id/CustomOfferingFragment"
-        android:name="com.pamo.iparish.CustomOfferingFragment"
+        android:name="com.pamo.iparish.donation.CustomOfferingFragment"
         android:label="fragment_custom_offering"
         tools:layout="@layout/fragment_custom_offering" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.pamo.iparish.SettingsFragment"
+        android:name="com.pamo.iparish.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -53,12 +53,12 @@
         app:launchSingleTop="true" />
     <fragment android:id="@+id/PaymentSettings" />
     <fragment android:id="@+id/mapsFragment"
-        android:name="com.pamo.iparish.MapsFragment"
+        android:name="com.pamo.iparish.googlemaps.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" />
   <fragment
     android:id="@+id/userFormFragment"
-    android:name="com.pamo.iparish.UserFormFragment"
+    android:name="com.pamo.iparish.settings.UserFormFragment"
     android:label="fragment_user_form"
     tools:layout="@layout/fragment_user_form" >
     <action
@@ -67,12 +67,12 @@
   </fragment>
   <fragment
     android:id="@+id/darkmodeFragment"
-    android:name="com.pamo.iparish.DarkmodeFragment"
+    android:name="com.pamo.iparish.darkMode.DarkmodeFragment"
     android:label="fragment_darkmode"
     tools:layout="@layout/fragment_darkmode" />
   <fragment
     android:id="@+id/darkInitFragment"
-    android:name="com.pamo.iparish.DarkInitFragment"
+    android:name="com.pamo.iparish.darkMode.DarkInitFragment"
     android:label="fragment_dark_init"
     tools:layout="@layout/fragment_dark_init" >
     <action
@@ -87,6 +87,6 @@
         app:destination="@id/mapsFragment" />
   <fragment
     android:id="@+id/prayerFragment"
-    android:name="com.pamo.iparish.PrayerFragment"
+    android:name="com.pamo.iparish.prayers.PrayerFragment"
     android:label="PrayerFragment" />
 </navigation>

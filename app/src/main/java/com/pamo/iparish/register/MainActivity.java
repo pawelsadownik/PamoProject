@@ -1,12 +1,10 @@
-package com.pamo.iparish;
+package com.pamo.iparish.register;
 
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.fragment.NavHostFragment;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,8 +21,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import android.os.Bundle;
+import com.pamo.iparish.HomeActivity;
+import com.pamo.iparish.R;
 
 import java.util.HashMap;
 import java.util.Map;

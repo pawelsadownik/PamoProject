@@ -1,4 +1,4 @@
-package com.pamo.iparish;
+package com.pamo.iparish.model;
 
 public class Parishioner {
     private String parishionerId;

@@ -1,4 +1,4 @@
-package com.pamo.iparish;
+package com.pamo.iparish.prayers;
 
 import android.os.Bundle;
 
@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.pamo.iparish.R;
 
 import java.util.Random;
 
