@@ -10,16 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
 
     private long mLastClickTime = 0;
-    FirebaseAuth fAuth;
-    String userId;
 
     @Override
     public View onCreateView(

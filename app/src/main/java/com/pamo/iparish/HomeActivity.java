@@ -11,13 +11,27 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class HomeActivity extends AppCompatActivity {
 
-    FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userId;
+
+    Parishioner parishioner;
+
     NavController navController;
+
+    public FirebaseFirestore getFStore() {
+        return fStore;
+    }
+
+    public Parishioner getParishioner() {
+        return parishioner;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +39,22 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userId = fAuth.getCurrentUser().getUid();
+
+        parishioner = new Parishioner(userId);
+
+        fStore.collection("users")
+                .document(userId).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                parishioner.setName(task.getResult().getString("name"));
+                parishioner.setSurname(task.getResult().getString("surname"));
+                parishioner.setPhoneNumber(task.getResult().getString("phoneNumber"));
+                parishioner.setChurch(task.getResult().getString("church"));
+            }
+                });
     }
 
     @Override
