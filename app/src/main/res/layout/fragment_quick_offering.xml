@@ -16,7 +16,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.489"
-    tools:src="@tools:sample/backgrounds/scenic" />
+    android:src="@drawable/priest" />
 
   <TextView
         android:id="@+id/textview_second"
@@ -78,6 +78,7 @@
 
       <TextView
             android:id="@+id/money"
+            android:textColor="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -89,6 +90,7 @@
 
       <TextView
         android:id="@+id/textView2"
+        android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

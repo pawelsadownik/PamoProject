@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,9 +15,6 @@ import androidx.fragment.app.Fragment;
 import com.pamo.iparish.R;
 import com.pamo.iparish.settings.PaymentActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class QuickOfferingFragment extends Fragment implements View.OnClickListener {
 
     TextView money;
@@ -24,6 +22,7 @@ public class QuickOfferingFragment extends Fragment implements View.OnClickListe
     Button decrement;
     Button pay;
     int amount;
+    RatingBar rating;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -36,6 +35,8 @@ public class QuickOfferingFragment extends Fragment implements View.OnClickListe
         increment = view.findViewById(R.id.increment);
         decrement = view.findViewById(R.id.decrement);
         pay = view.findViewById(R.id.pay);
+        rating = view.findViewById(R.id.ratingBar);
+
         money.setText(Integer.toString(amount));
 
         increment.setOnClickListener(this);
@@ -56,9 +57,11 @@ public class QuickOfferingFragment extends Fragment implements View.OnClickListe
       case R.id.increment:
         amount+=5;
         money.setText(Integer.toString(amount));
+        rating.setRating(amount/20);
         break;
       case R.id.decrement:
         amount-=1;
+        rating.setRating(amount/20);
         money.setText(Integer.toString(amount));
         break;
       case R.id.pay:
