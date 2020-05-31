@@ -19,18 +19,14 @@ import com.pamo.iparish.settings.PaymentActivity;
 
 public class CustomOfferingFragment extends Fragment implements View.OnClickListener {
 
-  ImageButton confession;
-  ImageButton funeral;
-  ImageButton mass;
-
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_custom_offering, container, false);
 
-    confession = view.findViewById(R.id.confession);
-    funeral = view.findViewById(R.id.funeral);
-    mass = view.findViewById(R.id.mass);
+    ImageButton confession = view.findViewById(R.id.confession);
+    ImageButton funeral = view.findViewById(R.id.funeral);
+    ImageButton mass = view.findViewById(R.id.mass);
 
     confession.setOnClickListener(this);
     funeral.setOnClickListener(this);
@@ -41,7 +37,6 @@ public class CustomOfferingFragment extends Fragment implements View.OnClickList
 
   public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-
   }
 
   @Override

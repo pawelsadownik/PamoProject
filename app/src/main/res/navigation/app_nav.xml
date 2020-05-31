@@ -66,19 +66,10 @@
       app:destination="@id/HomeFragment" />
   </fragment>
   <fragment
-    android:id="@+id/darkmodeFragment"
-    android:name="com.pamo.iparish.darkMode.DarkmodeFragment"
-    android:label="fragment_darkmode"
-    tools:layout="@layout/fragment_darkmode" />
-  <fragment
     android:id="@+id/darkInitFragment"
     android:name="com.pamo.iparish.darkMode.DarkInitFragment"
     android:label="fragment_dark_init"
-    tools:layout="@layout/fragment_dark_init" >
-    <action
-      android:id="@+id/action_darkInitFragment_to_darkmodeFragment"
-      app:destination="@id/darkmodeFragment" />
-  </fragment>
+    tools:layout="@layout/fragment_dark_init" />
     <action
         android:id="@+id/action_global_darkInitFragment"
         app:destination="@id/darkInitFragment" />

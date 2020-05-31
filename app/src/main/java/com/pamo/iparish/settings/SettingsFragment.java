@@ -15,7 +15,6 @@ import android.widget.Button;
 
 import com.pamo.iparish.R;
 
-
 public class SettingsFragment extends Fragment implements View.OnClickListener {
   private long mLastClickTime = 0;
 
