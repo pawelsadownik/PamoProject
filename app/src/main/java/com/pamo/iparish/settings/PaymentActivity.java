@@ -77,8 +77,6 @@ public class PaymentActivity extends AppCompatActivity {
 
     payment_amount = findViewById(R.id.payment_amount);
     payment_currency = findViewById(R.id.payment_currency);
-
-    //TO DO: set price for each product
     payment_amount.setText(Integer.toString(money));
 
     cardForm = findViewById(R.id.card_form);
