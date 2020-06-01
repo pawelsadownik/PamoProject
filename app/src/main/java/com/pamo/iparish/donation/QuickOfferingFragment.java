@@ -17,51 +17,48 @@ import com.pamo.iparish.settings.PaymentActivity;
 
 public class QuickOfferingFragment extends Fragment implements View.OnClickListener {
 
-    TextView money;
-    Button increment;
-    Button decrement;
-    Button pay;
-    int amount;
-    RatingBar rating;
-    @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        amount = 10;
+  private TextView money;
+  private int amount;
+  private RatingBar rating;
 
-        View view = inflater.inflate(R.layout.fragment_quick_offering, container, false);
+  @Override
+  public View onCreateView(
+    LayoutInflater inflater, ViewGroup container,
+    Bundle savedInstanceState) {
+    int amount = 10;
 
-        money = view.findViewById(R.id.money);
-        increment = view.findViewById(R.id.increment);
-        decrement = view.findViewById(R.id.decrement);
-        pay = view.findViewById(R.id.pay);
-        rating = view.findViewById(R.id.ratingBar);
+    View view = inflater.inflate(R.layout.fragment_quick_offering, container, false);
 
-        money.setText(Integer.toString(amount));
+    Button increment = view.findViewById(R.id.increment);
+    Button decrement = view.findViewById(R.id.decrement);
+    Button pay = view.findViewById(R.id.pay);
+    rating = view.findViewById(R.id.ratingBar);
+    money = view.findViewById(R.id.money);
 
-        increment.setOnClickListener(this);
-        decrement.setOnClickListener(this);
-        pay.setOnClickListener(this);
+    increment.setOnClickListener(this);
+    decrement.setOnClickListener(this);
+    pay.setOnClickListener(this);
 
-        return view;
-    }
+    money.setText(Integer.toString(amount));
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    return view;
+  }
 
-    }
+  public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+  }
 
   @Override
   public void onClick(View v) {
-    switch (v.getId()){
+    switch (v.getId()) {
       case R.id.increment:
-        amount+=5;
+        amount += 5;
         money.setText(Integer.toString(amount));
-        rating.setRating(amount/20);
+        rating.setRating(amount / 20);
         break;
       case R.id.decrement:
-        amount-=1;
-        rating.setRating(amount/20);
+        amount -= 1;
+        rating.setRating(amount / 20);
         money.setText(Integer.toString(amount));
         break;
       case R.id.pay:

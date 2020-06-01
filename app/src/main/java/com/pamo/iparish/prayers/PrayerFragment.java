@@ -3,7 +3,6 @@ package com.pamo.iparish.prayers;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -51,13 +50,7 @@ public class PrayerFragment extends Fragment {
         @Override
         public void onComplete(@NonNull Task<QuerySnapshot> task) {
           if (task.isSuccessful()) {
-            int i = new Random().nextInt(3);
-
-            DocumentSnapshot document = task.getResult().getDocuments().get(i);
-
-            prayer.setText(document.getString("content"));
-            title.setText(document.getString("title"));
-
+            setPrayer(task);
           } else {
             Log.d(TAG, "Error getting documents: ", task.getException());
           }
@@ -65,5 +58,14 @@ public class PrayerFragment extends Fragment {
       });
 
     return view;
+  }
+
+  public void setPrayer(Task<QuerySnapshot> task) {
+    int i = new Random().nextInt(3);
+
+    DocumentSnapshot document = task.getResult().getDocuments().get(i);
+
+    prayer.setText(document.getString("content"));
+    title.setText(document.getString("title"));
   }
 }

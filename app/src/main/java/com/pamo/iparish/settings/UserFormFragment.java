@@ -43,15 +43,10 @@ public class UserFormFragment extends Fragment {
 
   FirebaseFirestore fStore;
   FirebaseAuth fAuth;
-  EditText phoneNumber;
-  EditText name;
-  EditText surname;
-  Button saveButton;
   String userID;
-  Spinner spinner;
+
   List<String> churches = new ArrayList<>();
   String church;
-  ArrayAdapter<String> arrayAdapter;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -65,11 +60,12 @@ public class UserFormFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_user_form, container, false);
-    phoneNumber = view.findViewById(R.id.phoneNumber);
-    name = view.findViewById(R.id.name);
-    surname = view.findViewById(R.id.surname);
-    saveButton = view.findViewById(R.id.saveButton);
-    spinner = view.findViewById(R.id.spinner);
+
+    EditText phoneNumber = view.findViewById(R.id.phoneNumber);
+    EditText name = view.findViewById(R.id.name);
+    EditText surname = view.findViewById(R.id.surname);
+    Button saveButton = view.findViewById(R.id.saveButton);
+    Spinner spinner = view.findViewById(R.id.spinner);
     DocumentReference usersDocument = fStore.collection("users").document(userID);
 
     fStore.collection("churches")
