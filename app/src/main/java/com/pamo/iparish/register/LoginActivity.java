@@ -17,6 +17,12 @@ import com.pamo.iparish.HomeActivity;
 import com.pamo.iparish.R;
 import com.pamo.iparish.services.UserService;
 
+/**
+ * Part of UserAuthentication
+ * Uses injection of UserService for further actions
+ *
+ * @see UserService
+ */
 public class LoginActivity extends AppCompatActivity {
 
   FirebaseAuth mFirebaseAuth;
