@@ -21,7 +21,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
-
+/**
+ * Service for user registration and login
+ *
+ * This service is validating form and determining which action call
+ * @see com.pamo.iparish.register.MainActivity
+ * @see com.pamo.iparish.register.LoginActivity
+ */
 public class UserService extends Service {
 
   FirebaseAuth mFirebaseAuth;
@@ -33,7 +39,12 @@ public class UserService extends Service {
   public IBinder onBind(Intent intent) {
     return null;
   }
-
+  /**
+   * Validation method, called from login and register activities
+   * @param email User e-mail
+   * @param pwd  User password
+   * @param activity Activity that called action
+   */
   public void validateForm(String email, String pwd, View view, Activity activity) {
 
     emailId = view.findViewById(R.id.editText);
@@ -61,7 +72,6 @@ public class UserService extends Service {
   }
 
   public void createUser(String email, String pwd, Activity activity) {
-
     mFirebaseAuth = FirebaseAuth.getInstance();
     mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(activity, task -> {
       if (!task.isSuccessful()) {
@@ -80,7 +90,6 @@ public class UserService extends Service {
   }
 
   public void signInUser(String email, String pwd, Activity activity) {
-
     mFirebaseAuth = FirebaseAuth.getInstance();
     mFirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(activity, task -> {
       if (!task.isSuccessful()) {

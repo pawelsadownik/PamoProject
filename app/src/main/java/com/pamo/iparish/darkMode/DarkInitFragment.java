@@ -13,7 +13,13 @@ import android.view.ViewGroup;
 
 import com.pamo.iparish.R;
 
-
+/**
+ * Activity for loading layout resources
+ *
+ * This fragment is used to display different content from the rest of application
+ * For those who doesn't want donate
+ * @author Pawel Sadownik
+ */
 public class DarkInitFragment extends Fragment {
 
   @Override

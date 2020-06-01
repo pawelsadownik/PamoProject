@@ -34,6 +34,12 @@ import java.util.Map;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
+/**
+ * PaymentActivity uses an external library for Credit Card Template
+ * It uses firebase storage to get users data
+ * This activity is called from offering fragments with money value
+ * or from UserFormFragment to save Users Data
+ */
 public class PaymentActivity extends AppCompatActivity {
 
   CardForm cardForm;
@@ -131,7 +137,6 @@ public class PaymentActivity extends AppCompatActivity {
       }
     });
   }
-
 
   public void save(DocumentReference cardDocument) {
     save.setOnClickListener(view -> checkValidation(cardDocument));
