@@ -116,20 +116,12 @@ public class PaymentActivity extends AppCompatActivity {
             "Card CVV: " + cardForm.getCvv() + "\n" +
             "Postal code: " + cardForm.getPostalCode() + "\n" +
             "Phone number: " + cardForm.getMobileNumber());
-          alertBuilder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-              dialogInterface.dismiss();
-              Toast.makeText(PaymentActivity.this, "Thank you for purchase", Toast.LENGTH_LONG).show();
-              finish();
-            }
+          alertBuilder.setPositiveButton("Confirm", (dialogInterface, i) -> {
+            dialogInterface.dismiss();
+            Toast.makeText(PaymentActivity.this, "Thank you for purchase", Toast.LENGTH_LONG).show();
+            finish();
           });
-          alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-              dialogInterface.dismiss();
-            }
-          });
+          alertBuilder.setNegativeButton("Cancel", (dialogInterface, i) -> dialogInterface.dismiss());
           AlertDialog alertDialog = alertBuilder.create();
           alertDialog.show();
 
@@ -142,12 +134,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
   public void save(DocumentReference cardDocument) {
-    save.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        checkValidation(cardDocument);
-      }
-    });
+    save.setOnClickListener(view -> checkValidation(cardDocument));
   }
 
   public void saveData(DocumentReference cardDocument) {
@@ -183,28 +170,22 @@ public class PaymentActivity extends AppCompatActivity {
 
     fStore.collection("users")
       .get()
-      .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-        @Override
-        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-          if (task.isSuccessful()) {
-            for (QueryDocumentSnapshot document : task.getResult()) {
-              mMobileNumber.setText(document.getString("phoneNumber"));
-            }
-
-            cardDocument.addSnapshotListener(PaymentActivity.this, new EventListener<DocumentSnapshot>() {
-              @Override
-              public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                mCardNumber.setText(documentSnapshot.getString("cardNUmber"));
-                mExpiration.setText(documentSnapshot.getString("expiration"));
-                mCvv.setText(documentSnapshot.getString("cvv"));
-                mPostalCode.setText(documentSnapshot.getString("postalCode"));
-                mCountryCode.setText(documentSnapshot.getString("countryCode"));
-              }
-            });
-
-          } else {
-            Log.d(TAG, "Error getting documents: ", task.getException());
+      .addOnCompleteListener(task -> {
+        if (task.isSuccessful()) {
+          for (QueryDocumentSnapshot document : task.getResult()) {
+            mMobileNumber.setText(document.getString("phoneNumber"));
           }
+
+          cardDocument.addSnapshotListener(PaymentActivity.this, (documentSnapshot, e) -> {
+            mCardNumber.setText(documentSnapshot.getString("cardNUmber"));
+            mExpiration.setText(documentSnapshot.getString("expiration"));
+            mCvv.setText(documentSnapshot.getString("cvv"));
+            mPostalCode.setText(documentSnapshot.getString("postalCode"));
+            mCountryCode.setText(documentSnapshot.getString("countryCode"));
+          });
+
+        } else {
+          Log.d(TAG, "Error getting documents: ", task.getException());
         }
       });
   }

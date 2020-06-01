@@ -14,8 +14,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.pamo.iparish.model.Parishioner;
 import com.pamo.iparish.register.MainActivity;
 
 public class HomeActivity extends AppCompatActivity {
