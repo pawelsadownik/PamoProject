@@ -43,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
     });
 
     tvSignIn.setOnClickListener(v -> {
-      Intent i = new Intent(MainActivity.this, LoginActivity.class);
-      startActivity(i);
+      Intent intSignIn = new Intent(MainActivity.this, LoginActivity.class);
+      intSignIn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+      startActivity(intSignIn);
     });
   }
 }

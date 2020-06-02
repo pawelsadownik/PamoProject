@@ -65,11 +65,11 @@ public class UserFormFragment extends Fragment {
                            Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_user_form, container, false);
 
-    EditText phoneNumber = view.findViewById(R.id.phoneNumber);
-    EditText name = view.findViewById(R.id.name);
-    EditText surname = view.findViewById(R.id.surname);
-    Button saveButton = view.findViewById(R.id.saveButton);
-    Spinner spinner = view.findViewById(R.id.spinner);
+    EditText phoneNumber = view.findViewById(R.id.edittext_phone);
+    EditText name = view.findViewById(R.id.edittext_name);
+    EditText surname = view.findViewById(R.id.edittext_surname);
+    Button saveButton = view.findViewById(R.id.button_save);
+    Spinner spinner = view.findViewById(R.id.spinner_parish);
     DocumentReference usersDocument = fStore.collection("users").document(userID);
 
     fStore.collection("churches")

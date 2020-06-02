@@ -32,23 +32,25 @@ public class LoginActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
-
-    UserService userService = new UserService();
     View view = findViewById(android.R.id.content).getRootView();
 
-    mFirebaseAuth = FirebaseAuth.getInstance();
+    UserService userService = new UserService();
+
     EditText emailId = findViewById(R.id.editText);
     EditText password = findViewById(R.id.editText2);
     Button btnSignIn = findViewById(R.id.button2);
     TextView tvSignUp = findViewById(R.id.textView);
 
+    mFirebaseAuth = FirebaseAuth.getInstance();
     mAuthStateListener = firebaseAuth -> {
       FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
       if (mFirebaseUser != null) {
         Toast.makeText(LoginActivity.this, getString(R.string.toast_Logged), Toast.LENGTH_SHORT).show();
 
-        Intent i = new Intent(LoginActivity.this, HomeActivity.class);
-        startActivity(i);
+        Intent intToHome = new Intent(LoginActivity.this, HomeActivity.class);
+        intToHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intToHome);
+        finish();
       } else {
         Toast.makeText(LoginActivity.this, getString(R.string.toast_Login), Toast.LENGTH_SHORT).show();
       }
@@ -62,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 
     tvSignUp.setOnClickListener(v -> {
       Intent intSignUp = new Intent(LoginActivity.this, MainActivity.class);
+      intSignUp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
       startActivity(intSignUp);
     });
   }

@@ -48,26 +48,21 @@ public class UserService extends Service {
   public void validateForm(String email, String pwd, View view, Activity activity) {
 
     emailId = view.findViewById(R.id.editText);
+    password = view.findViewById(R.id.editText2);
     fStore = FirebaseFirestore.getInstance();
 
     if (email.isEmpty()) {
-      emailId.setError(Resources.getSystem().getString(R.string.enter_email));
+      emailId.setError(activity.getString(R.string.enter_email));
       emailId.requestFocus();
     } else if (pwd.isEmpty()) {
-      password.setError(Resources.getSystem().getString(R.string.enter_password));
+      password.setError(activity.getString(R.string.enter_password));
       password.requestFocus();
-    } else if (email.isEmpty() && pwd.isEmpty()) {
-      Toast.makeText(activity, activity.getString(R.string.error_empty), Toast.LENGTH_SHORT).show();
-
-    } else if (!(email.isEmpty() && pwd.isEmpty())) {
+    } else {
       if (activity.getLocalClassName().equals("register.MainActivity")) {
         createUser(email, pwd, activity);
       } else {
         signInUser(email, pwd, activity);
       }
-
-    } else {
-      Toast.makeText(activity, activity.getString(R.string.error), Toast.LENGTH_SHORT).show();
     }
   }
 
@@ -96,7 +91,9 @@ public class UserService extends Service {
         Toast.makeText(activity, activity.getString(R.string.error_again), Toast.LENGTH_SHORT).show();
       } else {
         Intent intToHome = new Intent(activity, HomeActivity.class);
+        intToHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(intToHome);
+        activity.finish();
       }
     });
   }
