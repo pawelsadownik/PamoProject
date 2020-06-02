@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/HomeFragment"
-        android:name="com.pamo.iparish.HomeFragment"
+        android:name="com.pamo.iparish.home.HomeFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_home">
 

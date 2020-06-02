@@ -1,4 +1,4 @@
-package com.pamo.iparish;
+package com.pamo.iparish.home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.pamo.iparish.register.MainActivity;
+import com.pamo.iparish.MainActivity;
+import com.pamo.iparish.R;
 
 public class HomeActivity extends AppCompatActivity {
 

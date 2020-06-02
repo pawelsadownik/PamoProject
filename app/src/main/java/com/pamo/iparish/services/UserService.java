@@ -3,18 +3,15 @@ package com.pamo.iparish.services;
 import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.IBinder;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.pamo.iparish.HomeActivity;
+import com.pamo.iparish.home.HomeActivity;
 import com.pamo.iparish.R;
 
 import java.util.HashMap;
@@ -26,38 +23,20 @@ public class UserService extends Service {
 
   FirebaseAuth mFirebaseAuth;
   FirebaseFirestore fStore;
-  EditText emailId, password;
   String userID;
+
+  public UserService() {
+    mFirebaseAuth = FirebaseAuth.getInstance();
+    fStore = FirebaseFirestore.getInstance();
+  }
 
   @Override
   public IBinder onBind(Intent intent) {
     return null;
   }
 
-  public void validateForm(String email, String pwd, View view, Activity activity) {
-
-    emailId = view.findViewById(R.id.editText);
-    password = view.findViewById(R.id.editText2);
-    fStore = FirebaseFirestore.getInstance();
-
-    if (email.isEmpty()) {
-      emailId.setError(activity.getString(R.string.enter_email));
-      emailId.requestFocus();
-    } else if (pwd.isEmpty()) {
-      password.setError(activity.getString(R.string.enter_password));
-      password.requestFocus();
-    } else {
-      if (activity.getLocalClassName().equals("register.MainActivity")) {
-        createUser(email, pwd, activity);
-      } else {
-        signInUser(email, pwd, activity);
-      }
-    }
-  }
-
   public void createUser(String email, String pwd, Activity activity) {
 
-    mFirebaseAuth = FirebaseAuth.getInstance();
     mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(activity, task -> {
       if (!task.isSuccessful()) {
         Toast.makeText(activity, activity.getString(R.string.error_again), Toast.LENGTH_SHORT).show();
@@ -76,7 +55,6 @@ public class UserService extends Service {
 
   public void signInUser(String email, String pwd, Activity activity) {
 
-    mFirebaseAuth = FirebaseAuth.getInstance();
     mFirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(activity, task -> {
       if (!task.isSuccessful()) {
         Toast.makeText(activity, activity.getString(R.string.error_again), Toast.LENGTH_SHORT).show();
