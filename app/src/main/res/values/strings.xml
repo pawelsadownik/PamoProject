@@ -32,5 +32,17 @@
   <string name="price">Price</string>
   <string name="intension">Intension</string>
   <string name="pay">Pay</string>
+    <string name="mobile_number_explanation">SMS is required on this number</string>
+    <string name="payment_confirmation_title">Confirm before purchase</string>
+    <string name="card_number">Card number</string>
+    <string name="card_expiry_date">Card expiry date</string>
+    <string name="card_cvv">Card CVV</string>
+    <string name="postal_code">Postal code</string>
+    <string name="phone_number">Phone number</string>
+    <string name="confirm">Confirm</string>
+    <string name="purchase_thanks">Thank you for purchase</string>
+    <string name="cancel">Cancel</string>
+    <string name="form_not_complete_info">Please complete the form</string>
+    <string name="data_updated">Data updated</string>
 
 </resources>
