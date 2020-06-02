@@ -15,6 +15,10 @@ import androidx.fragment.app.Fragment;
 import com.pamo.iparish.R;
 import com.pamo.iparish.settings.PaymentActivity;
 
+/**
+ * This fragment allows user to make a quick donation
+ * While choosing donation price his holy ranking is growing
+ */
 public class QuickOfferingFragment extends Fragment implements View.OnClickListener {
 
   private TextView money;

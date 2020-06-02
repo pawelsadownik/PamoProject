@@ -38,7 +38,11 @@ import java.util.Map;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-
+/**
+ * This fragment get and save Users data
+ * Data are user in PaymentActivity to prepare form
+ * @see PaymentActivity
+ */
 public class UserFormFragment extends Fragment {
 
   FirebaseFirestore fStore;

@@ -14,7 +14,10 @@ import android.widget.ImageButton;
 import com.pamo.iparish.R;
 import com.pamo.iparish.settings.PaymentActivity;
 
-
+/**
+ * This fragment allows user to choose a purpose of donation
+ * User choose between confession, funeral and mass
+ */
 public class CustomOfferingFragment extends Fragment implements View.OnClickListener {
 
   @Override

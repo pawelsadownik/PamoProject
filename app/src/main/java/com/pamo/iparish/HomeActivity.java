@@ -16,6 +16,11 @@ import android.view.MenuItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.pamo.iparish.register.MainActivity;
 
+
+/**
+ * This activity contains a top menu and a navfragment
+ * @uses NavController
+ */
 public class HomeActivity extends AppCompatActivity {
 
   NavController navController;

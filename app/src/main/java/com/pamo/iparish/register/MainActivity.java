@@ -13,6 +13,12 @@ import android.widget.TextView;
 import com.pamo.iparish.R;
 import com.pamo.iparish.services.UserService;
 
+/**
+ * Part of UserAuthentication
+ * Uses injection of UserService for further actions
+ *
+ * @see UserService
+ */
 
 public class MainActivity extends AppCompatActivity {
 
