@@ -63,7 +63,9 @@ public class HomeActivity extends AppCompatActivity {
         Log.println(Log.INFO, "iparish", "logout");
         FirebaseAuth.getInstance().signOut();
         Intent intToMain = new Intent(HomeActivity.this, MainActivity.class);
+        intToMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intToMain);
+        finish();
         return true;
       default:
         return super.onOptionsItemSelected(item);

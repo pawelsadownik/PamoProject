@@ -87,7 +87,9 @@ public class UserService extends Service {
         Toast.makeText(activity, activity.getString(R.string.error_again), Toast.LENGTH_SHORT).show();
       } else {
         Intent intToHome = new Intent(activity, HomeActivity.class);
+        intToHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(intToHome);
+        activity.finish();
       }
     });
   }
