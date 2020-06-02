@@ -1,75 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".settings.UserFormFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings.UserFormFragment">
 
-  <EditText
-      android:id="@+id/phoneNumber"
-      android:layout_width="250dp"
-      android:layout_height="wrap_content"
-      android:ems="10"
-      android:hint="@string/phone_number"
-      android:inputType="phone"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textview_parish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/your_parish"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_parish"
+        app:layout_constraintStart_toStartOf="@+id/spinner_parish" />
 
-  <EditText
-      android:id="@+id/name"
-      android:layout_width="250dp"
-      android:layout_height="wrap_content"
-      android:hint="@string/name_hint"
-      android:inputType="textPersonName"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.503"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.335" />
+    <TextView
+        android:id="@+id/textview_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/your_phone"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_phone"
+        app:layout_constraintStart_toStartOf="@+id/edittext_phone" />
 
-  <EditText
-      android:id="@+id/surname"
-      android:layout_width="250dp"
-      android:layout_height="wrap_content"
-      android:hint="@string/surname_hint"
-      android:inputType="textPersonName"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.498"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.418" />
+    <TextView
+        android:id="@+id/textview_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/your_last_name"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_surname"
+        app:layout_constraintStart_toStartOf="@+id/edittext_surname" />
 
-  <Button
-      android:id="@+id/saveButton"
-      android:layout_width="250dp"
-      android:layout_height="wrap_content"
-      android:background="@drawable/custom_button"
-      android:text="@string/save"
-      android:textAllCaps="false"
-      android:textColor="#FFFFFF"
-      android:textSize="20sp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.498"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.612" />
+    <EditText
+        android:id="@+id/edittext_phone"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/phone_number"
+        android:inputType="phone"
+        android:singleLine="true"
+        app:layout_constraintBottom_toTopOf="@+id/button_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_surname" />
 
-  <Spinner
-      android:id="@+id/spinner"
-      android:layout_width="250dp"
-      android:layout_height="100dp"
-      android:textSize="20sp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.503"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.139" />
+    <EditText
+        android:id="@+id/edittext_surname"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:hint="@string/surname_hint"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_name" />
+
+    <EditText
+        android:id="@+id/edittext_name"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:hint="@string/name_hint"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_surname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_parish" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_phone" />
+
+    <Spinner
+        android:id="@+id/spinner_parish"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="24dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/your_first_name"
+        app:layout_constraintBottom_toTopOf="@+id/edittext_name"
+        app:layout_constraintStart_toStartOf="@+id/edittext_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

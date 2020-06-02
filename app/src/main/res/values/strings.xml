@@ -43,4 +43,8 @@
     <string name="name_hint">Your first name</string>
     <string name="surname_hint">Your last name</string>
     <string name="save">Save</string>
+    <string name="your_parish">Your parish</string>
+    <string name="your_phone">Your phone number:</string>
+    <string name="your_last_name">Your last name</string>
+    <string name="your_first_name">Your first name</string>
 </resources>
