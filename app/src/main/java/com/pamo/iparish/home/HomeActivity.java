@@ -17,6 +17,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.pamo.iparish.MainActivity;
 import com.pamo.iparish.R;
 
+
+/**
+ * This activity contains a top menu and a navfragment
+ * @uses NavController
+ */
 public class HomeActivity extends AppCompatActivity {
 
   NavController navController;

@@ -33,7 +33,9 @@ import com.pamo.iparish.model.Parish;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/**
+ * This fragment allows user to find the chosen parish on map
+ */
 public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickListener, OnMapReadyCallback  {
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;

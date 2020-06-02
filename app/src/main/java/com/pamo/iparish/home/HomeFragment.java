@@ -12,6 +12,11 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.pamo.iparish.R;
 
+/**
+ * Main part of application
+ * User chooses what action want to call
+ *
+ */
 public class HomeFragment extends Fragment {
 
   private long mLastClickTime = 0;

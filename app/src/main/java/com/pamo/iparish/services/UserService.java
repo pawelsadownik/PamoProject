@@ -18,7 +18,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
-
+/**
+ * Service for user registration and login
+ *
+ * This service is validating form and determining which action call
+ * @see com.pamo.iparish.register.MainActivity
+ * @see com.pamo.iparish.register.LoginActivity
+ */
 public class UserService extends Service {
 
   FirebaseAuth mFirebaseAuth;
