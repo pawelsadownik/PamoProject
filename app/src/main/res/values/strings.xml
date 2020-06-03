@@ -50,4 +50,7 @@
     <string name="praise_god">Praise God</string>
     <string name="quick_offering">Quick offering</string>
     <string name="custom_offering">Custom offering</string>
+    <string name="button_user_form">Profile</string>
+    <string name="button_payment">Payment</string>
+    <string name="dark_mode">Release Evil</string>
 </resources>

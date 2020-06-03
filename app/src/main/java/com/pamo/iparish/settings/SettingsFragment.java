@@ -24,7 +24,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-    Button settingsButton = view.findViewById(R.id.button_settings);
+    Button settingsButton = view.findViewById(R.id.button_user_form);
     Button paymentButton = view.findViewById(R.id.button_payment);
     Button darkmodeButton = view.findViewById(R.id.dark_mode);
 
@@ -42,7 +42,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
   @Override
   public void onClick(View v) {
     switch (v.getId()) {
-      case R.id.button_settings:
+      case R.id.button_user_form:
         if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
           return;
         }
