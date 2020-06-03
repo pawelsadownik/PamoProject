@@ -46,4 +46,12 @@
     <string name="dark_mode">Release Evil</string>
     <string name="settings">Settings</string>
     <string name="nav_to_parish">Navigate to parish</string>
+    <string name="generosity_is_virtue">Generosity is virtue!</string>
+    <string name="click_to_make_offering">Click To Make Offering</string>
+    <string name="minus">-</string>
+    <string name="currency">€</string>
+    <string name="plus">+</string>
+    <string name="confession_descr">Pay for your sins!</string>
+    <string name="funeral_descr">Pay for the funeral</string>
+    <string name="holy_mass_descr">Pay for the Holy Mass</string>
 </resources>
