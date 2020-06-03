@@ -9,11 +9,9 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pamo.iparish.R;
 import com.pamo.iparish.home.HomeActivity;
-import com.pamo.iparish.model.Parish;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,26 +69,5 @@ public class UserService extends Service {
         activity.finish();
       }
     });
-  }
-
-  public Parish getUserChurch(String userID) {
-    Parish parish = new Parish();
-    fStore.collection("users").document(userID).get()
-            .addOnCompleteListener(task -> {
-              if (task.isSuccessful()) {
-                DocumentSnapshot document = task.getResult();
-                if (document.exists()) {
-                  Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                  parish.setId(document.getString("parish"));
-                  parish.setName(document.getString("church"));
-                  parish.setLocation(document.getGeoPoint("location"));
-                } else {
-                  Log.d(TAG, "No such document");
-                }
-              } else {
-                Log.d(TAG, "get failed with ", task.getException());
-              }
-            });
-    return parish;
   }
 }

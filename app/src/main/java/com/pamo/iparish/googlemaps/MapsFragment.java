@@ -32,9 +32,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.pamo.iparish.R;
 import com.pamo.iparish.model.Parish;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
 /**
@@ -48,8 +45,6 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
     private FirebaseAuth fAuth;
     private String userID;
     private Parish userParish;
-
-    private List<Parish> parishes = new ArrayList<>();
 
     private GoogleMap googleMap;
     private Marker lastSelectedMarker;
@@ -151,7 +146,7 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
             googleMap.addMarker(new MarkerOptions()
                     .position(geoloc)
                     .title(userParish.getName())). showInfoWindow();
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geoloc, 10.0f));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(geoloc, 10.0f));
             parishMarked = true;
         }
     }
