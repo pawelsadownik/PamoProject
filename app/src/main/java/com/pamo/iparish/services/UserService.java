@@ -7,7 +7,6 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,8 +21,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
  * Service for user registration and login
  *
  * This service is validating form and determining which action call
- * @see com.pamo.iparish.register.MainActivity
- * @see com.pamo.iparish.register.LoginActivity
+ * @see com.pamo.iparish.MainActivity
  */
 public class UserService extends Service {
 
@@ -51,7 +49,7 @@ public class UserService extends Service {
         DocumentReference documentReference = fStore.collection("users").document(userID);
         Map<String, Object> user = new HashMap<>();
         user.put("email", email);
-        documentReference.set(user).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+        documentReference.set(user).addOnSuccessListener(aVoid -> {
           Log.d(TAG, "onSuccess: " + userID);
           activity.startActivity(new Intent(activity, HomeActivity.class));
         }).addOnFailureListener(e -> Log.d(TAG, "onFailure: " + e.toString()));
