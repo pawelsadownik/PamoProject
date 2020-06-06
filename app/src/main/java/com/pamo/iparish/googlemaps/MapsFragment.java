@@ -42,7 +42,6 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;
 
     private FirebaseFirestore fStore;
-    private FirebaseAuth fAuth;
     private String userID;
     private Parish userParish;
 
@@ -56,9 +55,8 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        userID = fAuth.getCurrentUser().getUid();
+        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         fetchParish();
         return inflater.inflate(R.layout.fragment_maps, container, false);
     }
@@ -96,9 +94,6 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
         final long duration = 1500;
 
         final Interpolator interpolator = new BounceInterpolator();
-
-        Toast.makeText(getActivity(), marker.getTitle() + " clicked",
-                Toast.LENGTH_SHORT).show();
 
         handler.post(new Runnable() {
             @Override
@@ -140,14 +135,19 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
     }
 
     private void putParishOnMap() {
-        if (!parishMarked && googleMap != null && userParish != null) {
-            LatLng geoloc = new LatLng(userParish.getLatitude(), userParish.getLongitude());
+        if (googleMap != null) {
+            if (!parishMarked && userParish != null && userParish.getLocation() != null) {
+                LatLng geoloc = new LatLng(userParish.getLatitude(), userParish.getLongitude());
 
-            googleMap.addMarker(new MarkerOptions()
-                    .position(geoloc)
-                    .title(userParish.getName())). showInfoWindow();
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(geoloc, 10.0f));
-            parishMarked = true;
+                googleMap.addMarker(new MarkerOptions()
+                        .position(geoloc)
+                        .title(userParish.getName())).showInfoWindow();
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(geoloc, 10.0f));
+                parishMarked = true;
+            } else {
+                Toast.makeText(getActivity(), R.string.set_up_parish_first,
+                        Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
