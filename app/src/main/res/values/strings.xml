@@ -12,9 +12,9 @@
     <string name="email_hint">Email</string>
     <string name="passwd_hint">Password</string>
     <string name="notregistered">Not registered? Sign Up here</string>
-    <string name="registered">Already have an account? Sign in here</string>
+    <string name="registered">…or click here to sign up now!</string>
     <string name="login">Log In</string>
-    <string name="register">Register</string>
+    <string name="register">Sign in</string>
     <string name="title_activity_tesm2">tesm2Activity</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -47,4 +47,7 @@
     <string name="your_phone">Your phone number:</string>
     <string name="your_last_name">Your last name</string>
     <string name="your_first_name">Your first name</string>
+    <string name="praise_god">Praise God</string>
+    <string name="quick_offering">Quick offering</string>
+    <string name="custom_offering">Custom offering</string>
 </resources>

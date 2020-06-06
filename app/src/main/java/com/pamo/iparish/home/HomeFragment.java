@@ -1,4 +1,4 @@
-package com.pamo.iparish;
+package com.pamo.iparish.home;
 
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.pamo.iparish.R;
+
 /**
  * Main part of application
  * User chooses what action want to call
