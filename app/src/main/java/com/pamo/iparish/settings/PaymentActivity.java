@@ -12,11 +12,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.braintreepayments.cardform.view.CardForm;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.pamo.iparish.R;
 
 import java.util.HashMap;
@@ -58,6 +57,7 @@ public class PaymentActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         userID = fAuth.getCurrentUser().getUid();
         fStore = FirebaseFirestore.getInstance();
+
         DocumentReference cardDocument = fStore.collection("creditCards").document(userID);
 
         money = Integer.parseInt(getIntent().getStringExtra("money"));
@@ -68,17 +68,18 @@ public class PaymentActivity extends AppCompatActivity {
         mPostalCode = findViewById(R.id.bt_card_form_postal_code);
         mCountryCode = findViewById(R.id.bt_card_form_country_code);
         mMobileNumber = findViewById(R.id.bt_card_form_mobile_number);
-
-        setFormData(cardDocument);
-
         payment_amount = findViewById(R.id.payment_amount);
         payment_currency = findViewById(R.id.payment_currency);
         payment_amount.setText(Integer.toString(money));
-
         cardForm = findViewById(R.id.card_form);
         buy = findViewById(R.id.btnBuy);
         save = findViewById(R.id.btnSave);
 
+        loadCardForm(cardDocument);
+    }
+
+    private void loadCardForm(DocumentReference cardDocument) {
+        setFormData(cardDocument);
         cardForm.cardRequired(true)
                 .expirationRequired(true)
                 .cvvRequired(true)
@@ -96,11 +97,11 @@ public class PaymentActivity extends AppCompatActivity {
             save(cardDocument);
         } else {
             save.setVisibility(View.GONE);
-            buy(cardDocument);
+            buy();
         }
     }
 
-    public void buy(DocumentReference cardDocument) {
+    private void buy() {
         buy.setOnClickListener(view -> {
             if (cardForm.isValid()) {
                 alertBuilder = new AlertDialog.Builder(PaymentActivity.this);
@@ -127,24 +128,25 @@ public class PaymentActivity extends AppCompatActivity {
         });
     }
 
-    public void save(DocumentReference cardDocument) {
+    private void save(DocumentReference cardDocument) {
         save.setOnClickListener(view -> checkValidation(cardDocument));
     }
 
-    public void saveData(DocumentReference cardDocument) {
+    private void saveData(DocumentReference cardDocument) {
         Map<String, Object> user = new HashMap<>();
-        user.put("cardNUmber", mCardNumber.getText().toString());
-        user.put("expiration", mExpiration.getText().toString());
-        user.put("cvv", mCvv.getText().toString());
-        user.put("postalCode", mPostalCode.getText().toString());
-        user.put("countryCode", mCountryCode.getText().toString());
+        user.put("cardNUmber", cardForm.getCardNumber());
+        user.put("expiration", cardForm.getExpirationDateEditText().getText().toString());
+        user.put("cvv", cardForm.getCvv());
+        user.put("postalCode", cardForm.getPostalCode());
+        user.put("countryCode", cardForm.getCountryCode());
+        user.put("mobileNumber", cardForm.getMobileNumber());
 
-        cardDocument.set(user).addOnSuccessListener(
-                (OnSuccessListener) (aVoid) -> Log.d(TAG, "onSuccess: " + userID))
+        cardDocument.set(user)
+                .addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: " + userID))
                 .addOnFailureListener(e -> Log.d(TAG, "onFailure: " + e.toString()));
     }
 
-    public void checkValidation(DocumentReference cardDocument) {
+    private void checkValidation(DocumentReference cardDocument) {
         if (cardForm.isValid()) {
             saveData(cardDocument);
             Toast.makeText(PaymentActivity.this, R.string.data_updated, Toast.LENGTH_LONG).show();
@@ -155,28 +157,25 @@ public class PaymentActivity extends AppCompatActivity {
         }
     }
 
-    public void setFormData(DocumentReference cardDocument) {
+    private void setFormData(DocumentReference cardDocument) {
+        cardDocument.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
 
-        fStore.collection("users")
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            mMobileNumber.setText(document.getString("phoneNumber"));
-                        }
-
-                        cardDocument.addSnapshotListener(PaymentActivity.this,
-                                (documentSnapshot, e) -> {
-                                    mCardNumber.setText(documentSnapshot.getString("cardNUmber"));
-                                    mExpiration.setText(documentSnapshot.getString("expiration"));
-                                    mCvv.setText(documentSnapshot.getString("cvv"));
-                                    mPostalCode.setText(documentSnapshot.getString("postalCode"));
-                                    mCountryCode.setText(documentSnapshot.getString("countryCode"));
-                                });
-
-                    } else {
-                        Log.d(TAG, "Error getting documents: ", task.getException());
-                    }
-                });
+                if (document.exists()) {
+                    Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                    mCardNumber.setText(document.getString("cardNUmber"));
+                    mExpiration.setText(document.getString("expiration"));
+                    mCvv.setText(document.getString("cvv"));
+                    mPostalCode.setText(document.getString("postalCode"));
+                    mCountryCode.setText(document.getString("countryCode"));
+                    mMobileNumber.setText(document.getString("mobileNumber"));
+                } else {
+                    Log.d(TAG, "No such document");
+                }
+            } else {
+                Log.d(TAG, "get failed with ", task.getException());
+            }
+        });
     }
 }
