@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
+
 /**
  * Service for user registration and login
  *
@@ -39,6 +40,12 @@ public class UserService extends Service {
     return null;
   }
 
+  /**
+   * User registration method, called from main activity.
+   * @param email User e-mail
+   * @param pwd  User password
+   * @param activity Activity that called action
+   */
   public void createUser(String email, String pwd, Activity activity) {
 
     mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(activity, task -> {
@@ -57,6 +64,12 @@ public class UserService extends Service {
     });
   }
 
+  /**
+   * User authentication method, called from main activity.
+   * @param email User e-mail
+   * @param pwd  User password
+   * @param activity Activity that called action
+   */
   public void signInUser(String email, String pwd, Activity activity) {
 
     mFirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(activity, task -> {
