@@ -10,8 +10,8 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.pamo.iparish.home.HomeActivity;
 import com.pamo.iparish.R;
+import com.pamo.iparish.home.HomeActivity;
 
 import java.util.HashMap;
 import java.util.Map;
