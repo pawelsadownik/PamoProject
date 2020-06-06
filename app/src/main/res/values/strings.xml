@@ -2,7 +2,7 @@
     <string name="app_name">iParish</string>
     <string name="toast_Logged">You are logged in</string>
     <string name="toast_Login">Please log in</string>
-    <string name="enter_email">Please enter email</string>
+    <string name="enter_email">Please enter a valid email address</string>
     <string name="enter_password">Please enter password</string>
     <string name="error_again">Error Try again</string>
     <string name="logout">Log out</string>
@@ -54,4 +54,6 @@
     <string name="confession_descr">Pay for your sins!</string>
     <string name="funeral_descr">Pay for the funeral</string>
     <string name="holy_mass_descr">Pay for the Holy Mass</string>
+    <string name="set_up_parish_first">Please choose your parish first. Go to Settings, then Profile</string>
+    <string name="settings_updated">Profile settings updated!</string>
 </resources>

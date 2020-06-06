@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -100,8 +101,10 @@ public class UserFormFragment extends Fragment {
             DocumentReference documentReference = fStore.collection("users").document(userID);
 
             documentReference.set(user).addOnSuccessListener(aVoid -> {
+                Toast.makeText(getActivity(), R.string.settings_updated,
+                        Toast.LENGTH_SHORT).show();
                 NavHostFragment.findNavController(UserFormFragment.this)
-                        .navigate(R.id.action_userFormFragment_to_HomeFragment);
+                        .navigateUp();
                 Log.d(TAG, "onSuccess: " + userID);
             }).addOnFailureListener(e -> Log.d(TAG, "onFailure: " + e.toString()));
         });
