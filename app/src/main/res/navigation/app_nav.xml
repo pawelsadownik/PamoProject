@@ -68,7 +68,8 @@
     tools:layout="@layout/fragment_dark_init" />
     <action
         android:id="@+id/action_global_mapsFragment"
-        app:destination="@id/mapsFragment" />
+        app:destination="@id/mapsFragment"
+        app:launchSingleTop="true" />
     <fragment
         android:id="@+id/PrayerFragment"
         android:name="com.pamo.iparish.prayers.PrayerFragment"

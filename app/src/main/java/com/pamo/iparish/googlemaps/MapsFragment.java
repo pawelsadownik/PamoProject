@@ -146,7 +146,7 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
                 parishMarked = true;
             } else {
                 Toast.makeText(getActivity(), R.string.set_up_parish_first,
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
             }
         }
     }
