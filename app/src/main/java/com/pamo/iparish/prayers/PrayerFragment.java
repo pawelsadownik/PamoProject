@@ -22,7 +22,11 @@ import java.util.Random;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-
+/**
+ * This fragment allows user to read a prayer chosen by God - straight from heaven
+ *
+ * @author GOD
+ */
 public class PrayerFragment extends Fragment {
 
   TextView prayer;
@@ -50,7 +54,8 @@ public class PrayerFragment extends Fragment {
         @Override
         public void onComplete(@NonNull Task<QuerySnapshot> task) {
           if (task.isSuccessful()) {
-            setPrayer(task);
+            int i = new Random().nextInt(3);
+            setPrayer(task, i);
           } else {
             Log.d(TAG, "Error getting documents: ", task.getException());
           }
@@ -60,11 +65,14 @@ public class PrayerFragment extends Fragment {
     return view;
   }
 
-  public void setPrayer(Task<QuerySnapshot> task) {
-    int i = new Random().nextInt(3);
+  /**
+   * This method gets a prayer from firebase storage (heaven database)
+   *
+   * @param i This is number chosen by God
+   */
+  public void setPrayer(Task<QuerySnapshot> task, int i) {
 
     DocumentSnapshot document = task.getResult().getDocuments().get(i);
-
     prayer.setText(document.getString("content"));
     title.setText(document.getString("title"));
   }

@@ -15,17 +15,20 @@ import androidx.fragment.app.Fragment;
 import com.pamo.iparish.R;
 import com.pamo.iparish.settings.PaymentActivity;
 
+/**
+ * This fragment allows user to make a quick donation
+ * While choosing donation price his holy ranking is growing
+ */
 public class QuickOfferingFragment extends Fragment implements View.OnClickListener {
 
   private TextView money;
-  private int amount;
+  private int amount = 10;
   private RatingBar rating;
 
   @Override
   public View onCreateView(
     LayoutInflater inflater, ViewGroup container,
     Bundle savedInstanceState) {
-    int amount = 10;
 
     View view = inflater.inflate(R.layout.fragment_quick_offering, container, false);
 
@@ -54,11 +57,11 @@ public class QuickOfferingFragment extends Fragment implements View.OnClickListe
       case R.id.increment:
         amount += 5;
         money.setText(Integer.toString(amount));
-        rating.setRating(amount / 20);
+        rating.setRating(amount / 20.0f);
         break;
       case R.id.decrement:
         amount -= 1;
-        rating.setRating(amount / 20);
+        rating.setRating(amount / 20.0f);
         money.setText(Integer.toString(amount));
         break;
       case R.id.pay:

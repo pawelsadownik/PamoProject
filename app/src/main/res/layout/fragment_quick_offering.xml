@@ -19,24 +19,26 @@
     android:src="@drawable/priest" />
 
   <TextView
-        android:id="@+id/textview_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Generosity is virtue!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+      android:id="@+id/textview_second"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      android:text="@string/generosity_is_virtue"
+      android:textAlignment="center"
+      android:textSize="30sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/pay"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_marginBottom="24dp"
-        android:text="Click To Make Offering"
+        android:text="@string/click_to_make_offering"
         android:textAllCaps="false"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textColor="#FFFFFF"
         android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,10 +73,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/custom_button"
-        android:text="-"
+        android:text="@string/minus"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
       <TextView
             android:id="@+id/money"
@@ -84,7 +86,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:text="10"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -94,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="zl" />
+        android:text="@string/currency" />
 
       <Button
         android:id="@+id/increment"
@@ -102,10 +103,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/custom_button"
-        android:text="+"
+        android:text="@string/plus"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

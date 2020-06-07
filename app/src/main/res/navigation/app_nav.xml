@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/HomeFragment"
-        android:name="com.pamo.iparish.HomeFragment"
+        android:name="com.pamo.iparish.home.HomeFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_home">
 
@@ -18,9 +18,9 @@
         <action
             android:id="@+id/action_HomeFragment_to_CustomOfferingFragment"
             app:destination="@id/CustomOfferingFragment" />
-      <action
-        android:id="@+id/action_HomeFragment_to_prayerFragment"
-        app:destination="@id/prayerFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_prayerFragment"
+            app:destination="@id/PrayerFragment" />
     </fragment>
     <fragment
         android:id="@+id/QuickOfferingFragment"
@@ -39,19 +39,19 @@
         tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_settingsFragment_to_PaymentSettings"
-            app:destination="@id/PaymentSettings" />
-        <action
-            android:id="@+id/action_settingsFragment_to_MapsFragment"
-            app:destination="@id/mapsFragment" />
+            app:destination="@id/PaymentActivity" />
         <action
             android:id="@+id/action_settingsFragment_to_userFormFragment"
             app:destination="@id/userFormFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_darkInitFragment"
+            app:destination="@id/darkInitFragment" />
     </fragment>
     <action
         android:id="@+id/action_global_settingsFragment"
         app:destination="@id/settingsFragment"
         app:launchSingleTop="true" />
-    <fragment android:id="@+id/PaymentSettings" />
+    <fragment android:id="@+id/PaymentActivity" />
     <fragment android:id="@+id/mapsFragment"
         android:name="com.pamo.iparish.googlemaps.MapsFragment"
         android:label="fragment_maps"
@@ -60,24 +60,19 @@
     android:id="@+id/userFormFragment"
     android:name="com.pamo.iparish.settings.UserFormFragment"
     android:label="fragment_user_form"
-    tools:layout="@layout/fragment_user_form" >
-    <action
-      android:id="@+id/action_userFormFragment_to_HomeFragment"
-      app:destination="@id/HomeFragment" />
-  </fragment>
+    tools:layout="@layout/fragment_user_form" />
   <fragment
     android:id="@+id/darkInitFragment"
     android:name="com.pamo.iparish.darkMode.DarkInitFragment"
     android:label="fragment_dark_init"
     tools:layout="@layout/fragment_dark_init" />
     <action
-        android:id="@+id/action_global_darkInitFragment"
-        app:destination="@id/darkInitFragment" />
-    <action
         android:id="@+id/action_global_mapsFragment"
-        app:destination="@id/mapsFragment" />
-  <fragment
-    android:id="@+id/prayerFragment"
-    android:name="com.pamo.iparish.prayers.PrayerFragment"
-    android:label="PrayerFragment" />
+        app:destination="@id/mapsFragment"
+        app:launchSingleTop="true" />
+    <fragment
+        android:id="@+id/PrayerFragment"
+        android:name="com.pamo.iparish.prayers.PrayerFragment"
+        android:label="fragment_prayer"
+        tools:layout="@layout/fragment_prayer" />
 </navigation>
