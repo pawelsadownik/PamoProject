@@ -53,8 +53,10 @@ public class HomeActivity extends AppCompatActivity {
 
     switch (item.getItemId()) {
       case R.id.parish_map:
-        Log.println(Log.INFO, "iparish", "parish_pick");
-        navController.navigate(R.id.action_global_mapsFragment);
+        if (navController.getCurrentDestination().getId() != R.id.mapsFragment) {
+          Log.println(Log.INFO, "iparish", "parish_pick");
+          navController.navigate(R.id.action_global_mapsFragment);
+        } else Log.println(Log.INFO, "iparish", "attempt to open again interrupted");
         return true;
       case R.id.settings:
         Log.println(Log.INFO, "iparish", "settings");

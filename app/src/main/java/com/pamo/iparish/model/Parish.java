@@ -13,8 +13,10 @@ public class Parish {
     this.id = id;
     this.name = name;
     this.location = location;
-    this.latitude = location.getLatitude();
-    this.longitude = location.getLongitude();
+    if (location != null) {
+      this.latitude = location.getLatitude();
+      this.longitude = location.getLongitude();
+    }
   }
 
   public Parish(String id, String name, double latitude, double longitude) {

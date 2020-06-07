@@ -1,20 +1,21 @@
 package com.pamo.iparish;
 
 import android.content.Intent;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener;
 import com.google.firebase.auth.FirebaseUser;
 import com.pamo.iparish.home.HomeActivity;
 import com.pamo.iparish.services.UserService;
+
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
   EditText password;
   Button btnSignIn;
   TextView tvSignUp;
+
+  private static final Pattern EMAIL_PATTERN = Pattern.compile(
+          "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                  "\\@" +
+                  "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                  "(" +
+                  "\\." +
+                  "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                  ")+"
+  );
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
     userService = new UserService();
     mFirebaseAuth = FirebaseAuth.getInstance();
 
-    btnSignIn.setOnClickListener(v -> validateForm());
+    btnSignIn.setOnClickListener(v -> btnSignInOnClickListener());
 
-    tvSignUp.setOnClickListener(v -> validateForm(true));
+    tvSignUp.setOnClickListener(v -> tvSignUpOnClickListener());
   }
 
   @Override
@@ -70,11 +81,11 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
-  private void validateForm(boolean createUser) {
+  private void submitForm(boolean createUser) {
     String email = emailId.getText().toString();
     String pwd = password.getText().toString();
 
-    if (email.isEmpty()) {
+    if (!isValidEmail(email)) {
       emailId.setError(this.getString(R.string.enter_email));
       emailId.requestFocus();
     } else if (pwd.isEmpty()) {
@@ -89,7 +100,14 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
-  public void validateForm() {
-    this.validateForm(false);
+  private void btnSignInOnClickListener() {
+    this.submitForm(false);
+  }
+  private void tvSignUpOnClickListener() {
+    this.submitForm(true);
+  }
+
+  public static boolean isValidEmail(CharSequence email) {
+    return (email !=null && email.length()>0 && EMAIL_PATTERN.matcher(email).matches());
   }
 }
